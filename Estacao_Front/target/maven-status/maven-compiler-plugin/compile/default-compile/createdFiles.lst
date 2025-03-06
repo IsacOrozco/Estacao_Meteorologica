@@ -1,0 +1,7 @@
+Modelo\clima.class
+com\mycompany\estacao_1\JakartaRestConfiguration.class
+managedBeans\bgrP$1.class
+managedBeans\bgrP.class
+com\mycompany\estacao_1\resources\JakartaEE10Resource.class
+DAL\EstacaoDAO.class
+DAL\HibernateUtil.class

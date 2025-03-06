@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <h:head>
+        <title>Estação</title>
+        <link rel="icon" href="img/icon.png" type="image/png" />
+        <style>
+            .weather-container {
+    margin: 90px;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+  
+    
+
+}
+
+.weather-details {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    border-radius:10px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0,0.1);
+    background-color: #f9f9f9;
+}
+
+.detail img {
+    width: 50px;
+    padding: 13px;
+}
+.botao{
+    background-color: #66ccff; /* Verde */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+  
+}
+.botao:active {
+    background-color: #f9f9f9;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+.botao:hover {
+    background-color: #3e8e41;
+}
+
+.temperature {
+    font-size: 24px;
+    font-weight: bolder;
+    
+}
+
+.weather-info {
+    list-style: none;
+    padding: 0;
+}
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('img/praia.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.caixa{
+    border: 1px solid #ccc;
+    align-content: center;
+    justify-content: center;
+    border-radius:10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0,0.1);
+    background-color: #f9f9f9;
+    width: auto;
+    align-self: center;
+    display: block;
+}
+        </style>
+   
+    </h:head>
+    <h:body style="background-image: url('#{bgrP.imagemDeFundo}'); background-size: cover;">        
+    <h:form>
+
+        <div class="weather-container">
+            <div class="caixa">
+                <div class="weather-container">
+                    <h1>Previsão do Tempo para Sorocaba</h1>
+                    <h:panelGroup class="temperature">
+                    <h:outputText value="#{bgrP.diaDaSemana}" /> 
+                    <h:panelGroup rendered="#{bgrP.diaDaSemana eq 'Segunda-feira'}"> 
+                        <h:outputText value="" /> </h:panelGroup> 
+                    <h:panelGroup rendered="#{bgrP.diaDaSemana eq 'Terça-feira'}"> 
+                        <h:outputText value="" /> </h:panelGroup> 
+                    <h:panelGroup rendered="#{bgrP.diaDaSemana eq 'Quarta-feira'}"> 
+                        <h:outputText value="Hoje é quarta-feira!" /> 
+                    </h:panelGroup> <h:panelGroup rendered="#{bgrP.diaDaSemana eq 'Quinta-feira'}"> 
+                        <h:outputText value="Hoje é quinta-feira!" /> </h:panelGroup> 
+                    <h:panelGroup rendered="#{bgrP.diaDaSemana eq 'Sexta-feira'}"></h:panelGroup>
+                    </h:panelGroup>
+                    <br></br>
+                    <br></br>
+                    <div class="weather-details">
+                        <div class="detail">
+                            <h:graphicImage styleClass="img" value="#{bgrP.imagem}" alt="Status da Imagem"/>
+                            <p>Atualmente</p>
+                        </div>
+                    </div>
+                    <br></br>
+            <div class="temperature">
+                
+                Temperatura:
+                <h:outputText id="temperatura" value="#{bgrP.temperatura}"></h:outputText>º C
+            </div>
+            <ul class="weather-info">
+                Umidade: 
+                <h:outputText id="umidade" value="#{bgrP.umidade}"></h:outputText> %
+                <br></br>
+                Chuva*:
+                <h:outputText id="chuva" value="#{bgrP.chuva}"></h:outputText>
+                
+            </ul>
+                    <h:commandButton value="Ativar" styleClass ="botao" action="#{bgrP.pesquisarPorClima()}" onclick="#{bgrP.imagemDeFundo}"></h:commandButton>
+                    <br></br>
+                    <h:outputText value="#{bgrP.mensagem}"></h:outputText>
+            </div>
+            </div>
+            
+        </div>
+        <footer>
+            *chuva - parametro do sensor (max. 1024 min. 0)
+        </footer>
+        </h:form>
+    </h:body>
+</html>
